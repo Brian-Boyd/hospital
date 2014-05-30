@@ -6,14 +6,16 @@ class DoctorsController < ApplicationController
   end
 
   def show
-    @doctors = @doctor.present? ? @doctor.doctors : Doctor.all
+    @doctor = Doctor.find(params[:id])
   end
 
   def new
+    @doctor = Doctor.find(params[:id])
     @doctor = Doctors.new
   end
 
   def create
+    @doctor = Doctor.find(params[:id])
     @doctor = Doctors.new doctor_params
     success = @doctor.save
     if success == true

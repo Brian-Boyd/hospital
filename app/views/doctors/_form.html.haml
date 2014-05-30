@@ -1,4 +1,4 @@
-= form_for @doctor do |f|
+= form_for [@hospital, @doctor] do |f|
   = f.label :name
   = f.text_field :name, class: "doctor_name"
   %br
