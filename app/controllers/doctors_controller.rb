@@ -5,6 +5,10 @@ class DoctorsController < ApplicationController
     @doctors = @doctor.present? ? @doctor.doctors : Doctor.all
   end
 
+  def show
+    @doctors = @doctor.present? ? @doctor.doctors : Doctor.all
+  end
+
   def new
     @doctor = Doctors.new
   end
