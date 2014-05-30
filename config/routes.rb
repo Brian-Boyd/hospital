@@ -2,11 +2,15 @@ Rails.application.routes.draw do
   resources :doctors, only: [:index]
   resources :patients, only: [:index]
   resources :medications, only: [:index]
+  resources :doctors
 
   root 'home#index'
 
   get 'patients/:id' => 'patients#showinfo', as: :patient_showinfo
   get 'medications/:id' => 'medications#mededit', as: :medication_mededit
+  post 'medications/:id' => 'medications#medupdate', as: :medication_medupdate
+  get 'medications/:id' => 'medications#meddestroy', as: :medication_meddestroy
+  delete 'medications/:id' => 'medications#meddelete', as: :medication_meddelete
   
   resources :hospitals do
     member do

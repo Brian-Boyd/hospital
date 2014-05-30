@@ -67,7 +67,7 @@ private
   end
 
   def hospital_params
-    params.require(:hospital).permit(:name, :location, specialty)
+    params.require(:hospital).permit(:name, :location, :specialty)
   end
 
   def doctor_params

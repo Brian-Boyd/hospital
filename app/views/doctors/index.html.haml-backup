@@ -1,7 +1,0 @@
-%h1 List of Doctors
-%p
-- @doctors.each do |doctor|
-  %div.content
-    = doctor.name
-    %br
-    

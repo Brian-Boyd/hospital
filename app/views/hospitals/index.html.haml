@@ -1,0 +1,26 @@
+%hr
+%h1 Hospitals
+= link_to "Add New Hospital", new_hospital_path, :class => 'box box-color pull-right'
+.media
+  .media-body
+    %table.table.table-hover
+      %thead
+        %tr
+          %th Name
+          %th Location
+          %th Specialty
+          %th
+          %th
+      %tbody
+        - @hospitals.each do |hospital|
+          %tr
+            %td= link_to hospital.name, hospital_path(hospital)
+            %td= hospital.location
+            %td= hospital.specialty
+            %td
+              %p
+                = link_to 'Edit', edit_hospital_path(hospital), :class => 'box'
+            %td
+              %p
+                = link_to 'Delete', hospital, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'box'
+                

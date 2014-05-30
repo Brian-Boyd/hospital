@@ -1,7 +1,7 @@
 class MedicationsController < ApplicationController
-  before_filter :find_patient, except: [:index, :mededit]
-  before_filter :find_hospital, except: [:index, :mededit]
-  before_filter :find_medication, only: [:show, :edit, :update, :destroy, :mededit]
+  before_filter :find_patient, except: [:index, :mededit, :meddelete, :medupdate]
+  before_filter :find_hospital, except: [:index, :mededit, :meddelete, :medupdate]
+  before_filter :find_medication, only: [:show, :edit, :update, :destroy, :mededit, :meddelete, :medupdate]
   # before_filter :load_medication
 
   # def load_medication
@@ -34,17 +34,27 @@ class MedicationsController < ApplicationController
   def edit
   end
 
-  def mededit
-  end
-
   def update
     @medication.update_attributes medication_params
       redirect_to hospital_patient_path(@hospital, @patient)
   end
 
+  def mededit
+  end
+
+  def medupdate
+    @medication.update_attributes medication_params
+      redirect_to medications_path
+  end
+
   def destroy
     @medication.delete
     redirect_to root_path
+  end
+
+  def meddelete
+    @medication.delete
+    redirect_to medications_path
   end
 
 private

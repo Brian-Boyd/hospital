@@ -1,25 +1,23 @@
-.row
+.row.media
   .col-md-12
     %h2 Medication List
-    .table-responsive
-      %table.table.table-bordred.table-striped
+    .table-responsive.media-body
+      %table.table.table-hover
         %thead
           %th Name
           %th Description
-          %th Edit
-          %th Delete
+          %th 
+          %th 
         %tbody
         -@medications.each do |medication|
           %tr
             %td 
               = medication.name
             %td 
-              =medication.description
+              = medication.description
             %td
               %p
-                Edit
-                <!-- = link_to 'Edit', medication_mededit_path, :class => 'box' -->
+                = link_to 'Edit', medication_mededit_path(medication), :class => 'box'
             %td
               %p
-                Delete
-                <!-- = link_to 'Delete', medication, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'box' -->
+                = link_to 'Delete', medication_meddestroy_path(medication), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'box'

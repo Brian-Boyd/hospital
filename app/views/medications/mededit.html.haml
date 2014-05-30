@@ -1,5 +1,5 @@
 %h4 Edit Medication
-= form_for @medication do |f|
+= form_for :medication do |f|
   = render 'layouts/error_messages', object: @medication
   = f.label :name
   = f.text_field :name, class: "medication_name"

@@ -1,0 +1,30 @@
+= link_to "Return to Home Page", root_path
+%p
+= @doctor.name
+%br
+= @doctor.specialty
+%hr
+
+%h4 Below are the list of patients who have been helped at this doctor
+
+.patients_released
+  - @patients_completed.each do |patient|
+    = link_to patient.name, doctor_patient_path(@doctor, patient)
+    helped at
+    = patient.updated_at.strftime("%l:%M%p")
+    %br
+
+%hr
+
+%a{ class: 'patient-details', name: 'patient-details'}
+%p
+.tac.logo
+  %h3
+  = link_to @hospital.name, hospital_path(@hospital)
+  %br
+.tac
+  = @hospital.location
+  %br
+  = @hospital.specialty
+%br
+%br

@@ -1,22 +1,44 @@
-%h1 List of Hospitals
-= link_to "Create Hospital", new_hospital_path, :class => 'box box-color pull-right'
-%p
-= paginate @hospitals
-%p
-- @hospitals.each do |hospital|
-  %div.content
-    = link_to hospital.name, hospital_path(hospital)
-    %br
-    %strong Location: 
-    = hospital.location
-    %br
-    %strong Specialty: 
-    = hospital.specialty
-    %br
-    
-    = link_to "Edit", edit_hospital_path(hospital)
-    |
-    = link_to "Delete", hospital_path(hospital), method: :delete
-    %hr
-
-= paginate @hospitals
+%hr
+.row
+  .col-xs-12.col-sm-6.col-lg-4
+    .box
+      .icon
+        .image
+          %i.fa.fa-thumbs-o-up
+        .info
+          %h3.title Made with Bootstrap
+          %p
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper.
+          .more
+            %a{:href => "#", :title => "Title Link"}
+              Read More
+              %i.fa.fa-angle-double-right
+      .space
+  .col-xs-12.col-sm-6.col-lg-4
+    .box
+      .icon
+        .image
+          %i.fa.fa-flag
+        .info
+          %h3.title Icons by Font Awesome
+          %p
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper.
+          .more
+            %a{:href => "#", :title => "Title Link"}
+              Read More
+              %i.fa.fa-angle-double-right
+      .space
+  .col-xs-12.col-sm-6.col-lg-4
+    .box
+      .icon
+        .image
+          %i.fa.fa-desktop
+        .info
+          %h3.title Desktop Friendly
+          %p
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper.
+          .more
+            %a{:href => "#", :title => "Title Link"}
+              Read More
+              %i.fa.fa-angle-double-right
+      .space

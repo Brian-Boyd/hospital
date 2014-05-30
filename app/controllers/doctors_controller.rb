@@ -1,12 +1,48 @@
 class DoctorsController < ApplicationController
-  before_filter :load_doctor
-
-  def load_doctor
-    @doctor = Doctor.find(params[:doctor_id]) if params[:doctor_id].present?
-  end
+  before_filter :find_doctor
 
   def index
     @doctors = @doctor.present? ? @doctor.doctors : Doctor.all
+  end
+
+  def new
+    @doctor = Doctors.new
+  end
+
+  def create
+    @doctor = Doctors.new doctor_params
+    success = @doctor.save
+    if success == true
+      flash[:notice] = "Doctor was successfully created!"
+      redirect_to doctors_path(doctor)
+    else
+      flash[:error] = "Error detected. Please try again."
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    success = @doctor.update_attributes doctor_params
+    if success == true
+      flash[:notice] = "Successfully updated patient record!"
+      redirect_to redirect_to doctors_path(doctor)
+    else
+      flash[:error] = "Please double check your entries"
+      render :edit
+    end 
+  end
+
+  def destroy
+    @doctor.delete
+    redirect_to root_path
+  end
+
+private
+  def find_doctor
+    @doctor = Doctor.find(params[:doctor_id]) if params[:doctor_id].present?
   end
 
 end
