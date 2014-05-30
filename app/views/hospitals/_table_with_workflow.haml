@@ -1,0 +1,7 @@
+%tr{ class: "#{patient.workflow_state} patient patient_#{patient.id}"}
+  %td
+    = link_to patient.name, hospital_patient_path(@hospital, patient, anchor: "patient-details"), class: "box"
+  %td
+    (#{patient.workflow_state})
+  %td
+    = workflow_links(patient)

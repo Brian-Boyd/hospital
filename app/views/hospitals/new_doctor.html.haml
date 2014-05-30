@@ -1,0 +1,9 @@
+%h4 Add New Doctor
+%h6.instruct-message Please enter details in the following fields
+= form_for [@hospital, @doctor], url: create_doctor_hospital_path(@hospital) do |f|
+  = f.label :name
+  = f.text_field :name, class: "doctor_name"
+  %br
+  = f.submit "Add/Edit Doctor", class: "doctor_submit"
+  
+= link_to "Cancel", hospital_path(@hospital)

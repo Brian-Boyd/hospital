@@ -1,0 +1,45 @@
+= link_to "Return to Home Page", root_path
+%p
+= @hospital.name
+%br
+= @hospital.location
+%hr
+= link_to "New patient", new_hospital_patient_path(@hospital, anchor: "patient-details"), :class => 'box box-color pull-right'
+
+= render 'patients/search'
+
+%h4 Below are the list of patients currently waiting
+
+.list
+  %table.table-hover
+    %tbody
+      %tr
+        %th Name
+        %th Status
+        %th Action
+      - @patients_processing.each do |patient|
+        = render "table_with_workflow", patient: patient
+
+%hr
+
+%h4 Below are the list of patients who have been helped at this hospital
+
+.patients_released
+  - @patients_completed.each do |patient|
+    = link_to patient.name, hospital_patient_path(@hospital, patient)
+    helped at
+    = patient.updated_at.strftime("%l:%M%p")
+    %br
+
+%hr
+
+= link_to "New Doctor", new_doctor_hospital_path(@hospital), :class => 'box box-color pull-right'
+
+%h4 Below are the list of doctors practicing at this hosptial
+
+%p
+- @hospital.doctors.each do |doctor|
+  = doctor.name
+  %br
+
+%hr

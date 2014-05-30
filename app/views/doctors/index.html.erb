@@ -1,0 +1,23 @@
+<h1>Doctors</h1>
+
+<div class="media">
+  <div class="media-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Specialty</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @doctors.each do |doctor| %>
+          <tr>
+            <td><%= doctor.name %></td>
+            <td><%= doctor.specialty %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

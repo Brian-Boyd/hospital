@@ -1,0 +1,13 @@
+%html
+  %head
+    %title The Iron Yard Hospital & Care Center
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %div.container
+      .header
+        %h1.tac The Iron Yard Hospital & Care Center
+
+      = render 'layouts/flash'
+      = yield

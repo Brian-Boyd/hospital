@@ -1,0 +1,22 @@
+%h1 List of Hospitals
+= link_to "Create Hospital", new_hospital_path, :class => 'box box-color pull-right'
+%p
+= paginate @hospitals
+%p
+- @hospitals.each do |hospital|
+  %div.content
+    = link_to hospital.name, hospital_path(hospital)
+    %br
+    %strong Location: 
+    = hospital.location
+    %br
+    %strong Specialty: 
+    = hospital.specialty
+    %br
+    
+    = link_to "Edit", edit_hospital_path(hospital)
+    |
+    = link_to "Delete", hospital_path(hospital), method: :delete
+    %hr
+
+= paginate @hospitals

@@ -1,0 +1,10 @@
+// erb code
+// console.log("<%= @patient.inspect %>")
+// $("tr.patient_" + "<%= @patient.id %>").remove();
+
+// haml code
+console.log("#{@patient.inspect}")
+$("tr.patient_#{ @patient.id }").remove()
+$("div.patients_released").append(
+"#{@patient.name} helped at #{ @patient.updated_at.strftime('%l:%M%p') }<br>"
+);

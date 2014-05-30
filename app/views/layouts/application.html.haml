@@ -1,0 +1,76 @@
+%html
+  %head
+    %title The Iron Yard Hospital & Care Center
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    %link{:href => "http://fonts.googleapis.com/css?family=Homenaje", :rel => "stylesheet", :type => "text/css"}/
+  %body
+    .container
+      .header
+        / logo, top nav and head title
+        .header-left
+          %h1.tac.logo
+            The Medical Outsource Group
+        .header-right
+          Brian Boyd, CEO
+          %br
+            510 Mill Street
+            %br
+              (843) 425-7030
+              %br
+                brian@cubicalweb.com
+      / end header
+      .nav-main
+        / logo, top nav and head title
+        .nav-left
+          %ul
+            %li
+              %a.nav-list-item{ href: "/" } Home
+            %li
+              %a.nav-list.nav-list-item{ href: "/hospitals" } Hospitals
+            %li
+              %a.nav-list.nav-list-item{ href: "/doctors" } Doctors
+            %li
+              %a.nav-list.nav-list-item{ href: "/patients" } Patients
+            %li
+              %a.nav-list.nav-list-item{ href: "/medications" } Medications
+        .nav-right
+          %form#search-blog{ action: "", method: "get" }
+            %input{ type: "search" }
+            %input{ type: "submit", value: "Search" }
+      / end navbar
+      .billboard
+        / logo, top nav and head title
+        %img{ src: "/assets/header.jpg"}
+      / end billboard
+      .sliderbottom
+        / logo, top nav and head title
+        %img{ src: "/assets/sliderbottom.png"}
+      / end sliderbottom
+      .left-column
+        / your main content
+        = render 'layouts/flash'
+        = yield
+      / end main content
+      .footer
+        / your footer
+        .footer-logo
+        .footer-copyright
+          \&copy; 2014 Brian Boyd
+          %br
+            An Ironyard Project
+        .footer-right
+          %ul
+            %li
+              %a{ href: "/" } Home
+            %li
+              %a{ href: "/hospitals" } Hospitals
+            %li
+              %a{ href: "/doctors" } Doctors
+            %li
+              %a{ href: "/patients" } Patients
+            %li
+              %a{ href: "/medications" } Medications
+      / end footer
+    / end container

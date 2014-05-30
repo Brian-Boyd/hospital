@@ -1,0 +1,52 @@
+%a{ class: 'patient-details', name: 'patient-details'}
+%p
+
+.tac
+  %h2 
+    %strong Patient Information
+%br
+
+.row
+  .col-md-offset-1.col-md-10.col-lg-offset-2.col-lg-8
+    .well.profile
+      .col-sm-12
+        .col-xs-12.col-sm-8
+          %h2 
+            = @patient.name
+          %br
+          %p
+            %strong Disorder:
+            %ul
+              %li
+                = @patient.disorder
+          %p
+            %strong Release Notes:
+            %ul
+              %li
+                = @patient.release_note
+          %p
+            %strong Patient at:
+            %br
+          - @patient.hospitals.each do |hospital|
+            %ul
+              %li
+                = hospital.name
+                %br
+                = hospital.location
+                %p
+          %p
+            %strong Medication List:
+          - @patient.medications.each do |medication|
+            %ul
+              %li
+                = medication.name
+                %br
+                = medication.description
+                %p
+          %p
+        .col-xs-12.col-sm-4.text-center
+          %figure
+            %img.img-circle.img-responsive{:alt => "", :src => "/assets/profile-head.png"}
+            %br
+            %strong Workflow Status
+            = @patient.workflow_state

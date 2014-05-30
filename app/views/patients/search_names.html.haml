@@ -1,0 +1,10 @@
+%a{ class: 'search-details', name: 'search-details'}
+%h4 Search Results
+%p
+
+%ul
+  - @search_names.each do |patient|
+    %li
+      = patient.name
+
+= link_to "Return to Hospital Page", hospital_path(@hospital), :class => 'box box-color pull-right'

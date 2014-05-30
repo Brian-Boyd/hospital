@@ -1,0 +1,25 @@
+.row
+  .col-md-12
+    %h2 Medication List
+    .table-responsive
+      %table.table.table-bordred.table-striped
+        %thead
+          %th Name
+          %th Description
+          %th Edit
+          %th Delete
+        %tbody
+        -@medications.each do |medication|
+          %tr
+            %td 
+              = medication.name
+            %td 
+              =medication.description
+            %td
+              %p
+                Edit
+                <!-- = link_to 'Edit', medication_mededit_path, :class => 'box' -->
+            %td
+              %p
+                Delete
+                <!-- = link_to 'Delete', medication, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'box' -->

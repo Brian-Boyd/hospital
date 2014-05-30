@@ -1,0 +1,21 @@
+= form_for [@hospital, @patient] do |f|
+  = render 'layouts/error_messages', object: @patient
+  = f.label :name
+  = f.text_field :name, class: "patient_name"
+  %br
+  = f.label :email
+  = f.text_field :email, class: "patient_email"
+  %br
+  = f.label :disorder
+  = f.text_area :disorder, class: "patient_description"
+  / %br
+  / = f.label :doctor
+  / = f.text_field :doctor, class: "patient_doctor"
+  / %br
+  / - @hospitals.each do |hospital|
+  /   = check_box_tag 'patient[hospital_ids][]', hospital.id, @patient.hospitals.include?(hospital), {id: "hospital_id_#{hospital.id}"}
+  /   = label_tag "hospital_id_#{hospital.id}", hospital.name
+  / %br
+  = f.submit "Add/Edit Patient", class: "patient_submit"
+
+= link_to "Cancel", hospital_path(@hospital)

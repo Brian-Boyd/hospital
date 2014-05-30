@@ -1,0 +1,3 @@
+= form_tag search_names_hospital_patients_path(@hospital, @patient, anchor: "search-details"), method: :get, class: 'patient_search' do
+  = text_field_tag "q", "", placeholder: "Search"
+  = submit_tag "Search"

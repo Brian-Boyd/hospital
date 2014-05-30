@@ -1,0 +1,12 @@
+= form_for @hospital do |f|
+  = f.label :name
+  = f.text_field :name, class: "hospital_name"
+  %br
+  = f.label :location
+  = f.text_field :location, class: "hospital_location"
+  %br
+  = f.label :specialty
+  = f.text_field :specialty, class: "hospital_location"
+  %br
+  = f.submit "Add/Edit Hospital", class: "hospital_submit"
+  = link_to "Cancel", root_path
