@@ -1,4 +1,5 @@
 class HospitalsController < ApplicationController
+  before_action :authenticate_user!
   before_filter :find_hospital, only: [:show, :edit, :update, :destroy, :new_doctor, :create_doctor]
   # before_filter :load_hospital
 
@@ -25,9 +26,9 @@ class HospitalsController < ApplicationController
     success = @hospital.save
     if success == true
       flash[:notice] = "Hospital was successfully created!"
-      redirect_to root_path
+      redirect_to hospitals_path
     else
-      flash[:error] = "Error detected. Please try again."
+      # flash[:error] = "Error detected. Please try again."
       render :new
     end
   end
@@ -37,12 +38,12 @@ class HospitalsController < ApplicationController
 
   def update
     @hospital.update_attributes hospital_params
-    redirect_to root_path
+    redirect_to hospitals_path
   end
 
   def destroy
     @hospital.delete
-    redirect_to root_path
+    redirect_to hospitals_path
   end
 
   def new_doctor
@@ -56,7 +57,7 @@ class HospitalsController < ApplicationController
       flash[:notice] = "Doctor was successfully created!"
       redirect_to hospital_path(@hospital)
     else
-      flash[:error] = "Error detected. Please try again."
+      # flash[:error] = "Error detected. Please try again."
       render :new_doctor
     end
   end
@@ -71,7 +72,7 @@ private
   end
 
   def doctor_params
-      params.require(:doctor).permit(:name)
+      params.require(:doctor).permit(:name, :specialty)
   end
 
 end

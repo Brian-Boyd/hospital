@@ -1,8 +1,14 @@
-= link_to "Return to Home Page", root_path
-%p
-= @hospital.name
+%hr
+%h1.tac
+  = @hospital.name
 %br
-= @hospital.location
+%h2.tac 
+  %strong
+  = @hospital.location
+%h5.tac
+  %br
+  Specialty: 
+  = @hospital.specialty
 %hr
 = link_to "New patient", new_hospital_patient_path(@hospital, anchor: "patient-details"), :class => 'box box-color pull-right'
 

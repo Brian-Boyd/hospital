@@ -1,9 +1,11 @@
-= form_for [@hospital, @doctor] do |f|
-  = f.label :name
-  = f.text_field :name, class: "doctor_name"
+= bootstrap_form_for @doctor, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10" do |f|
+  = f.alert_message "Please fix the errors below."
+  = f.text_field :name, placeholder: "Full name of doctor", class: "doctor_name"
   %br
-  = f.label :specialty
-  = f.text_field :specialty, class: "doctor_specialty"
+  = f.text_field :specialty, placeholder: "The specialty of doctor", class: "doctor_specialty"
   %br
-  = f.submit "Add/Edit Doctor", class: "doctor_submit"
-  = link_to "Cancel", root_path
+  = f.check_boxes_collection :hospitals, Hospital.all, :id, :name
+  %br
+  = f.form_group do
+    = f.submit "Add/Edit doctor", class: "btn btn-success doctor_submit"
+    = link_to "Cancel", doctors_path

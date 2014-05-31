@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+  before_action :authenticate_user!
   before_filter :find_hospital, except: [:index, :showinfo]
   before_filter :find_patient, only: [:show, :edit, :update, :waiting, :doctor, :xray, :surgery, :leaving, :billpay, :release, :showinfo]
   # before_filter :load_patient
@@ -28,7 +29,7 @@ class PatientsController < ApplicationController
       flash[:notice] = "Patient was successfully created!"
       redirect_to hospital_patient_path(@hospital, @patient)
     else
-      flash[:error] = "Error detected. Please try again."
+      # flash[:error] = "Error detected. Please try again."
       render :new
     end
   end
@@ -42,7 +43,7 @@ class PatientsController < ApplicationController
       flash[:notice] = "Successfully updated patient record!"
       redirect_to hospital_patient_path(@hospital, @patient)
     else
-      flash[:error] = "Please double check your entries"
+      # flash[:error] = "Please double check your entries"
       render :edit
     end 
   end

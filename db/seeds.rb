@@ -1,5 +1,18 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# Admin and User password = 123
+
+# User.create!(
+#   email:      'admin@example.com',
+#   password:   '$2a$10$FEzggTxrXj4eIUjOyGhtuu9xLTczFKCVgROu5T.aJxoPL5yLJvbXC',
+#   admin:      '1'
+#   )
+
+# User.create!(
+#   email:      'user@example.com',
+#   password:   '$2a$10$sMhg7ckPqkpTNBvIyawS3e2C5jDAzQAnJeb3fqZt7BkBPlnuQZYlS',
+#   admin:      '0'
+#   )
 
 Hospital.create!(
   name:       'University of Texas MD',

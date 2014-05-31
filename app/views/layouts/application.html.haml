@@ -13,9 +13,9 @@
           %h1.tac.logo
             The Medical Outsource Group
         .header-right
-          Brian Boyd, CEO
+          Brian Boyd, Student
           %br
-            510 Mill Street
+            Charleston, SC
             %br
               (843) 425-7030
               %br
@@ -35,6 +35,11 @@
               %a.nav-list.nav-list-item{ href: "/patients" } Patients
             %li
               %a.nav-list.nav-list-item{ href: "/medications" } Medications
+            %li
+              - if user_signed_in? 
+                = link_to('Logout', destroy_user_session_path, :method => :delete)
+              - else
+                = link_to('Login', new_user_session_path)
         .nav-right
           %form#search-blog{ action: "", method: "get" }
             %input{ type: "search" }

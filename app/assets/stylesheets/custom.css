@@ -1,3 +1,9 @@
+.form-horizontal {
+  background-color: #ccc;
+  padding: 30px;
+  border-radius: 5px;
+}
+
 a.box {
   padding: 2px 5px;
   margin: 0 0 1em 1em;

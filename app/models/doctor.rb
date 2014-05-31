@@ -5,6 +5,7 @@ class Doctor < ActiveRecord::Base
   has_many :doctor_hospital_joins
   has_many :hospitals, through: :doctor_hospital_joins
 
-  # validates :name, :presence => {:message => 'Name cannot be blank, form not submitted'}
+  validates :name, :presence => {:message => 'Name cannot be blank, form not submitted'}
+  validates :specialty, :presence => {:message => 'Specialty cannot be blank, form not submitted'}
   
 end

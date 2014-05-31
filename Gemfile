@@ -8,6 +8,9 @@ gem 'quiet_assets'
 gem 'letter_opener', group: :development
 gem 'faker'
 gem 'kaminari'
+gem 'bootstrap_form'
+gem "nested_form"
+gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'

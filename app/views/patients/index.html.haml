@@ -1,7 +1,28 @@
-%h1 List of Patients
-%p
-- @patients.each do |patient|
-  %div.content
-    = patient.name
-    %br
-    
+%hr
+%h1.tac
+  %strong Patients
+%br
+%h5.tac 
+  = link_to "Add New Patient (FIX)", root_path
+%hr
+.media
+  .media-body
+    %table.table.table-hover
+      %thead
+        %th Name
+        %th Disorder
+        -if current_user.admin?
+          %th 
+          %th 
+      %tbody
+      - @patients.each do |patient|
+        %tr
+          %td= link_to patient.name, patient_showinfo_path(patient)
+          %td= patient.disorder
+          -if current_user.admin?
+            %td
+              %p
+                = link_to 'Edit', root_path, :class => 'box'
+            %td
+              %p
+                = link_to 'Delete', root_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'box'

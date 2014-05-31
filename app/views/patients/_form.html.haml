@@ -1,13 +1,15 @@
-= form_for [@hospital, @patient] do |f|
-  = render 'layouts/error_messages', object: @patient
-  = f.label :name
-  = f.text_field :name, class: "patient_name"
+= bootstrap_form_for [@hospital, @patient], layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10" do |f|
+  = f.alert_message "Please fix the errors below."
+  = f.text_field :name, placeholder: "Full name of patient", class: "patient_name"
   %br
-  = f.label :email
-  = f.text_field :email, class: "patient_email"
+  = f.email_field :email, placeholder: "The email of patient", class: "patient_email"
   %br
-  = f.label :disorder
-  = f.text_area :disorder, class: "patient_description"
+  = f.text_field :disorder, placeholder: "The disorder of patient", class: "patient_disorder"
+  %br
+  = f.form_group do
+    = f.submit "Add/Edit Patient", class: "btn btn-success patient_submit"
+    = link_to "Cancel", patients_path
+
   / %br
   / = f.label :doctor
   / = f.text_field :doctor, class: "patient_doctor"
@@ -16,6 +18,3 @@
   /   = check_box_tag 'patient[hospital_ids][]', hospital.id, @patient.hospitals.include?(hospital), {id: "hospital_id_#{hospital.id}"}
   /   = label_tag "hospital_id_#{hospital.id}", hospital.name
   / %br
-  = f.submit "Add/Edit Patient", class: "patient_submit"
-
-= link_to "Cancel", hospital_path(@hospital)

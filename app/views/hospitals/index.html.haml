@@ -1,6 +1,10 @@
 %hr
-%h1 Hospitals
-= link_to "Add New Hospital", new_hospital_path, :class => 'box box-color pull-right'
+%h1.tac
+  %strong Hospitals
+%br
+%h5.tac 
+  = link_to "Add New Hospital", new_hospital_path
+%hr
 .media
   .media-body
     %table.table.table-hover
@@ -9,18 +13,20 @@
           %th Name
           %th Location
           %th Specialty
-          %th
-          %th
+          -if current_user.admin?
+            %th
+            %th
       %tbody
         - @hospitals.each do |hospital|
           %tr
             %td= link_to hospital.name, hospital_path(hospital)
             %td= hospital.location
             %td= hospital.specialty
-            %td
-              %p
-                = link_to 'Edit', edit_hospital_path(hospital), :class => 'box'
-            %td
-              %p
-                = link_to 'Delete', hospital, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'box'
+            -if current_user.admin?
+              %td
+                %p
+                  = link_to 'Edit', edit_hospital_path(hospital), :class => 'box'
+              %td
+                %p
+                  = link_to 'Delete', hospital, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'box'
                 

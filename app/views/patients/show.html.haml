@@ -1,3 +1,4 @@
+%hr
 %a{ class: 'patient-details', name: 'patient-details'}
 %p
 .tac.logo
@@ -56,4 +57,5 @@
             %strong Workflow Status
             = @patient.workflow_state
             %p
-            = link_to "Edit Patient", edit_hospital_patient_path, :class => 'box'
+            -if current_user.admin?
+              = link_to "Edit Patient", edit_hospital_patient_path, :class => 'box'

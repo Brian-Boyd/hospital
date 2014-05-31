@@ -1,6 +1,10 @@
 %hr
-%h1 Doctors
-= link_to "Add New Doctor", new_doctor_path, :class => 'box box-color pull-right'
+%h1.tac
+  %strong Doctors
+%br
+%h5.tac 
+  = link_to "Add New Doctor (FIX)", new_doctor_path
+%hr
 .media
   .media-body
     %table.table.table-hover
@@ -8,16 +12,18 @@
         %tr
           %th Name
           %th Specialty
-          %th
-          %th
+          -if current_user.admin?
+            %th
+            %th
       %tbody
         - @doctors.each do |doctor|
           %tr
             %td= link_to doctor.name, doctor_path(doctor)
             %td= doctor.specialty
-            %td
-              %p
-                = link_to 'Edit', edit_doctor_path(doctor), :class => 'box'
-            %td
-              %p
-                = link_to 'Delete', doctor, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'box'
+            -if current_user.admin?
+              %td
+                %p
+                  = link_to 'Edit', edit_doctor_path(doctor), :class => 'box'
+              %td
+                %p
+                  = link_to 'Delete', doctor, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'box'

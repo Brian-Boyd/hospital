@@ -6,5 +6,6 @@ class Hospital < ActiveRecord::Base
 
   validates :name, :presence => {:message => 'Name cannot be blank, form not submitted'}
   validates :location, :presence => {:message => 'Location cannot be blank, form not submitted'}
+  validates :specialty, :presence => {:message => 'Specialty cannot be blank, form not submitted'}
 
 end

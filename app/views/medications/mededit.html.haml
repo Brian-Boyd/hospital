@@ -1,10 +1,11 @@
+%hr
 %h4 Edit Medication
-= form_for :medication do |f|
-  = render 'layouts/error_messages', object: @medication
-  = f.label :name
-  = f.text_field :name, class: "medication_name"
+= bootstrap_form_for :medication, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10" do |f|
+  = f.alert_message "Please fix the errors below."
+  = f.text_field :name, placeholder: "Full name of medication", class: "medication_name"
   %br
-  = f.label :description
-  = f.text_area :description, class: "medication_description"
+  = f.text_field :description, placeholder: "The description of medication", class: "medication_description"
   %br
-  = f.submit "Add/Edit Medication", class: "medication_submit"
+  = f.form_group do
+    = f.submit "Add/Edit Medication", class: "btn btn-success medication_submit"
+    = link_to "Cancel", medications_path

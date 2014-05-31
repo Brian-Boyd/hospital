@@ -1,3 +1,28 @@
+To Do:
+======
+1)  NavBar - Hospitals
+    - Connect the doctors to the hospital when selected by checkboxes.
+    - Tidy up the show view
+2)  NavBar - Doctors
+    - Add new doctor link does not work and needs to be fixed.
+3)  NavBar - Patients
+    - 
+4)  NavBar - Medications
+    - 
+5)  Overall
+    - Fix glyphicons as I want the edit and delete to use glyphicons instead of text.
+      http://stackoverflow.com/questions/18369036/bootstrap-3-glyphicons-not-working
+      http://bootsnipp.com/snippets/2P90
+    - It would be nice if the search form in the navbar could search the entire database.
+    - Paginate all 4 tables (hospitals, doctors, patients, medication)
+    - Allow all pages to be viewable, expect for CRUD actions, to every visitors. Might need to add guest user, but I was not able to figure it out.
+      * https://github.com/plataformatec/devise/wiki/How-To:-Set-up-devise-as-a-single-user-system
+      * https://github.com/plataformatec/devise/wiki/How-To:-Create-a-guest-user
+
+
+
+Previous Instructions
+
 ====================================
 == Assignment 5/1/2014 (Hospital v5)
 ====================================

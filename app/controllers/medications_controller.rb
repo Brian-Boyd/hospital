@@ -1,4 +1,5 @@
 class MedicationsController < ApplicationController
+  before_action :authenticate_user!
   before_filter :find_patient, except: [:index, :mededit, :meddelete, :medupdate]
   before_filter :find_hospital, except: [:index, :mededit, :meddelete, :medupdate]
   before_filter :find_medication, only: [:show, :edit, :update, :destroy, :mededit, :meddelete, :medupdate]
@@ -23,7 +24,7 @@ class MedicationsController < ApplicationController
       flash[:notice] = "Medication was successfully created!"
       redirect_to hospital_patient_path(@hospital, @patient)
     else
-      flash[:error] = "Error detected. Please try again."
+      # flash[:error] = "Error detected. Please try again."
       render :new
     end
   end

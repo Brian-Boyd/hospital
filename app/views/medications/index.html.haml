@@ -1,20 +1,27 @@
-.row.media
-  .col-md-12
-    %h2 Medication List
-    .table-responsive.media-body
-      %table.table.table-hover
-        %thead
-          %th Name
-          %th Description
+%hr
+%h1.tac
+  %strong Medications
+%br
+%h5.tac 
+  = link_to "Add New Medication(FIX)", root_path
+%hr
+.media
+  .media-body
+    %table.table.table-hover
+      %thead
+        %th Name
+        %th Description
+        -if current_user.admin?
           %th 
           %th 
-        %tbody
-        -@medications.each do |medication|
-          %tr
-            %td 
-              = medication.name
-            %td 
-              = medication.description
+      %tbody
+      -@medications.each do |medication|
+        %tr
+          %td 
+            = medication.name
+          %td 
+            = medication.description
+          -if current_user.admin?
             %td
               %p
                 = link_to 'Edit', medication_mededit_path(medication), :class => 'box'
