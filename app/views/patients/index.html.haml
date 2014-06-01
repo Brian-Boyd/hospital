@@ -3,7 +3,7 @@
   %strong Patients
 %br
 %h5.tac 
-  = link_to "Add New Patient (FIX)", root_path
+  = link_to "Add New Patient", new_patient_path
 %hr
 .media
   .media-body
@@ -22,7 +22,8 @@
           -if current_user.admin?
             %td
               %p
+                / = link_to 'Edit', edit_patient_path, :class => 'box'
                 = link_to 'Edit', root_path, :class => 'box'
             %td
               %p
-                = link_to 'Delete', root_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'box'
+                = link_to 'Delete', patient, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'box'

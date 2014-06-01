@@ -1,18 +1,23 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-# Admin and User password = 123
 
-# User.create!(
-#   email:      'admin@example.com',
-#   password:   '$2a$10$FEzggTxrXj4eIUjOyGhtuu9xLTczFKCVgROu5T.aJxoPL5yLJvbXC',
-#   admin:      '1'
-#   )
+u = User.new(
+  name:       'Admin User',
+  email:      'admin@example.com',
+  password:   '123',
+  admin:      '1'
+  )
+u.save!(:validate => false)
 
-# User.create!(
-#   email:      'user@example.com',
-#   password:   '$2a$10$sMhg7ckPqkpTNBvIyawS3e2C5jDAzQAnJeb3fqZt7BkBPlnuQZYlS',
-#   admin:      '0'
-#   )
+u = User.new(
+  name:       'Normal User',
+  email:      'user@example.com',
+  password:   '123',
+  admin:      '0'
+  )
+u.save!(:validate => false)
+
+#############################################################
 
 Hospital.create!(
   name:       'University of Texas MD',
@@ -92,6 +97,8 @@ Hospital.create!(
   specialty:  'Urology'
   )
 
+#############################################################
+
 Doctor.create!(
   name:       'Dr. James Kildare, M.D.',
   specialty:  'Internal Medicine'
@@ -166,6 +173,8 @@ Doctor.create!(
   name:       'Dr. Derek Shepherd, M.D.',
   specialty:  'Neurosurgery'
   )
+
+#############################################################
 
 Patient.create!(
   name:           'Lucy Ricardo',
@@ -293,6 +302,8 @@ Patient.create!(
   disorder:       'Alice in Wonderland Syndrome - Probably as a result of something malfunctioning in the brain’s occipital lobe, this disorder causes people to percieve objects as being either much larger or smaller than they really are. Moreover, the individual will also mispercieve the passage of time and possibly have their sense of hearing and touch affected as well.'
   )
 
+#############################################################
+
 Medication.create!(
   name:         'Lipitor',
   description:  'Cholesterol-lowering statin drug'
@@ -343,6 +354,8 @@ Medication.create!(
   description:  'Injectable anemia drug'
   )
 
+#############################################################
+
 DoctorHospitalJoin.create!( doctor_id: '1', hospital_id: '1' )
 DoctorHospitalJoin.create!( doctor_id: '1', hospital_id: '2' )
 DoctorHospitalJoin.create!( doctor_id: '1', hospital_id: '3' )
@@ -373,6 +386,8 @@ DoctorHospitalJoin.create!( doctor_id: '4', hospital_id: '10' )
 DoctorHospitalJoin.create!( doctor_id: '4', hospital_id: '13' )
 DoctorHospitalJoin.create!( doctor_id: '4', hospital_id: '14' )
 DoctorHospitalJoin.create!( doctor_id: '4', hospital_id: '15' )
+
+#############################################################
 
 HospitalPatientJoin.create!( hospital_id: '1', patient_id: '1' )
 HospitalPatientJoin.create!( hospital_id: '1', patient_id: '2' )
@@ -410,7 +425,8 @@ HospitalPatientJoin.create!( hospital_id: '4', patient_id: '18' )
 HospitalPatientJoin.create!( hospital_id: '4', patient_id: '40' )
 HospitalPatientJoin.create!( hospital_id: '4', patient_id: '21' )
 
-MedicationPatientJoin.delete_all
+#############################################################
+
 MedicationPatientJoin.create!( medication_id: '1', patient_id: '1' )
 MedicationPatientJoin.create!( medication_id: '1', patient_id: '2' )
 MedicationPatientJoin.create!( medication_id: '1', patient_id: '3' )

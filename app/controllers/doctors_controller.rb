@@ -1,7 +1,7 @@
 class DoctorsController < ApplicationController
   before_action :authenticate_user!
   # before_filter :find_hospital, except: :index
-  before_filter :find_doctor
+  before_filter :find_doctor, only: [:show, :edit, :update, :destroy]
 
   def index
     @doctors = @doctor.present? ? @doctor.doctors : Doctor.all
@@ -12,15 +12,15 @@ class DoctorsController < ApplicationController
   end
 
   def new
-    @doctor = Doctors.new
+    @doctor = Doctor.new
   end
 
   def create
-    @doctor = @hospital.doctors.create doctor_params
+    @doctor = Doctor.create doctor_params
     success = @doctor.save
     if success == true
       flash[:notice] = "Doctor was successfully created!"
-      redirect_to doctors_path(doctor)
+      redirect_to doctors_path
     else
       # flash[:error] = "Error detected. Please try again."
       render :new

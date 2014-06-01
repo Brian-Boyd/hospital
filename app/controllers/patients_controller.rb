@@ -1,12 +1,7 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
-  before_filter :find_hospital, except: [:index, :showinfo]
-  before_filter :find_patient, only: [:show, :edit, :update, :waiting, :doctor, :xray, :surgery, :leaving, :billpay, :release, :showinfo]
-  # before_filter :load_patient
-
-  # def load_patient
-  #   @patient = Patient.find(params[:patient_id]) if params[:patient_id].present?
-  # end
+  # before_filter :find_hospital, except: [:index, :showinfo]
+  before_filter :find_patient, only: [:show, :edit, :update, :destroy, :waiting, :doctor, :xray, :surgery, :leaving, :billpay, :release, :showinfo]
 
   def index
     @patients = @patient.present? ? @patient.patients : Patient.all
@@ -19,15 +14,15 @@ class PatientsController < ApplicationController
   end
 
   def new
-    @patient = @hospital.patients.new
+    @patient = Patient.new
   end
 
   def create
-    @patient = @hospital.patients.create patient_params
+    @patient = Patient.create patient_params
     success = @patient.save
     if success == true
       flash[:notice] = "Patient was successfully created!"
-      redirect_to hospital_patient_path(@hospital, @patient)
+      redirect_to patients_path
     else
       # flash[:error] = "Error detected. Please try again."
       render :new
@@ -41,11 +36,16 @@ class PatientsController < ApplicationController
     success = @patient.update_attributes patient_params
     if success == true
       flash[:notice] = "Successfully updated patient record!"
-      redirect_to hospital_patient_path(@hospital, @patient)
+      redirect_to patients_path
     else
       # flash[:error] = "Please double check your entries"
       render :edit
     end 
+  end
+
+  def destroy
+    @patient.delete
+    redirect_to patients_path
   end
 
   def waiting

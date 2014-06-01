@@ -1,11 +1,6 @@
 class HospitalsController < ApplicationController
   before_action :authenticate_user!
   before_filter :find_hospital, only: [:show, :edit, :update, :destroy, :new_doctor, :create_doctor]
-  # before_filter :load_hospital
-
-  # def load_hospital
-  #   @hospital = Hospital.find(params[:hospital_id]) if params[:hospital_id].present?
-  # end
 
   def index
     @hospitals = @hospital.present? ? @hospital.hospitals : Hospital.all
@@ -37,8 +32,14 @@ class HospitalsController < ApplicationController
   end
 
   def update
-    @hospital.update_attributes hospital_params
-    redirect_to hospitals_path
+    success = @hospital.update_attributes hospital_params
+    if success == true
+      flash[:notice] = "Successfully updated hospital record!"
+      redirect_to hospitals_path
+    else
+      # flash[:error] = "Please double check your entries"
+      render :edit
+    end 
   end
 
   def destroy
