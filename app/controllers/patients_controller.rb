@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
-  # before_filter :find_hospital, except: [:index, :showinfo]
+  before_filter :find_hospital, only: [:show, :waiting, :doctor, :xray, :surgery, :billpay]
   before_filter :find_patient, only: [:show, :edit, :update, :destroy, :waiting, :doctor, :xray, :surgery, :leaving, :billpay, :release, :showinfo]
 
   def index
