@@ -1,15 +1,5 @@
 %hr
 %a{ class: 'patient-details', name: 'patient-details'}
-%p
-.tac.logo
-  %h3
-  = link_to @hospital.name, hospital_path(@hospital)
-  %br
-.tac
-  = @hospital.location
-  %br
-  = @hospital.specialty
-%br
 %br
 
 .row
@@ -58,4 +48,4 @@
             = @patient.workflow_state
             %p
             -if current_user.admin?
-              = link_to "Edit Patient", edit_hospital_patient_path, :class => 'box'
+              = link_to "Edit Patient", edit_patient_path(@patient), :class => 'box'

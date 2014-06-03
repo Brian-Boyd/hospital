@@ -1,6 +1,6 @@
 %tr{ class: "#{patient.workflow_state} patient patient_#{patient.id}"}
   %td
-    = link_to patient.name, patient_path, class: "box"
+    = link_to patient.name, patient_path(patient), class: "box"
   %td
     (#{patient.workflow_state})
   %td
